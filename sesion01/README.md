@@ -8,6 +8,7 @@ Software que usaremos en el curso
     * En Windows instalar *Git Bash*
     * [book](https://git-scm.com/book/es/v2)
 * [node](https://nodejs.org/en/about/) - versión LTS
+* [firefox developer edition](https://www.mozilla.org/ast/firefox/developer/)
 
 Crear cuenta de github
 * [github](https://github.com/)
