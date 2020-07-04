@@ -13,10 +13,22 @@ body{
 .container{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 main{
   font-size: 2rem;
 }
+main section:nth-child(-n+2) input{
+  border-radius: .3rem;
+  padding: .5em;
+}
 main section:nth-child(3){
   display: flex;
+  justify-content: space-between;
+}
+main section:nth-child(3) button{
+  width: 25%;
+  height: 2rem;
+  border-radius: .6rem;
+  box-shadow: .3rem .6rem;
 }
