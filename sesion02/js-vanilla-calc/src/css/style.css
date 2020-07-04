@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html {
+  box-sizing: border-box;
+}
+
+body{
+  background-color: steelblue;
+  font-family: 'Courier New', Courier, monospace;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+}
+main{
+  font-size: 2rem;
+}
+main section:nth-child(3){
+  display: flex;
+}
