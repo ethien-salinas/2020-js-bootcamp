@@ -1,34 +1,52 @@
-* {
-  padding: 0;
+*,
+*::after,
+*::before {
   margin: 0;
+  padding: 0;
 }
-html {
-  box-sizing: border-box;
+h1 {
+  margin: 1.5em;
+  font-size: xx-large;
 }
-
-body{
+h1::before {
+  content: '"';
+}
+h1::after {
+  content: '..."';
+}
+body {
   background-color: steelblue;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main{
-  font-size: 2rem;
+main {
+    font-size: 1.5rem;
 }
-main section:nth-child(-n+2) input{
+main section:nth-child(n+1):nth-child(-n+2) input{
+  font-size: large;
   border-radius: .3rem;
-  padding: .5em;
+  padding: .6rem;
 }
-main section:nth-child(3){
-  display: flex;
-  justify-content: space-between;
+main section:nth-child(n+3):nth-child(-n+4){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
 }
 main section:nth-child(3) button{
-  width: 25%;
+  width: 21%;
   height: 2rem;
   border-radius: .6rem;
-  box-shadow: .3rem .6rem;
+  box-shadow: .3rem .6rem dimgrey;
+}
+main section:nth-child(4) {
+  flex-direction: column;
+}
+main section:nth-child(4) span{
+  font-size: 3rem;
+  font-weight: 600;
 }
