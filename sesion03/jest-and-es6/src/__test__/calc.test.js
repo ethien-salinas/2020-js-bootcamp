@@ -13,13 +13,10 @@ test('3 - 6 should be -3', () => {
   expect(diff(3, 6)).toBe(-3)
 })
 
-
-for (let i = 0; i < sumTestCases.length; i++) {
-
-  test(`${sumTestCases[i].number1} + ${sumTestCases[i].number2} should be ${sumTestCases[i].expect}`, () => {
+sumTestCases.forEach(testCase => {
+  test(`${testCase.number1} + ${testCase.number2} should be ${testCase.expect}`, () => {
     expect(
-      sum(sumTestCases[i].number1, sumTestCases[i].number2)
-    ).toBe(sumTestCases[i].expect)
+      sum(testCase.number1, testCase.number2)
+    ).toBe(testCase.expect)
   })
-
-}
+})
