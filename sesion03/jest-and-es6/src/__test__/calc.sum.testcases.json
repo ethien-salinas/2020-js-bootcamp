@@ -1,5 +1,6 @@
 [
   {"number1": 3, "number2": 3, "expect": 6},
   {"number1": 6, "number2": 6, "expect": 12},
+  {"number1": 6, "number2": "c", "expect": "6c"},
   {"number1": "a", "number2": "b", "expect": "ab"}
 ]
