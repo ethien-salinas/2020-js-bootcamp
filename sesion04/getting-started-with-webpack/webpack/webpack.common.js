@@ -8,7 +8,7 @@ module.exports = {
     scripts: './src/scripts.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name].[contenthash].bundle.js'
   },
   plugins: [
