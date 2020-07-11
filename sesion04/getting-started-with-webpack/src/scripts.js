@@ -1,0 +1,1 @@
+console.log('another file to be recognized by webpack')
