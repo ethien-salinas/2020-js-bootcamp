@@ -1,1 +1,1 @@
-console.log('another file to be recognized by webpack')
+console.log('merge needs to be destructured')
