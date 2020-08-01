@@ -16,6 +16,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/dashboard.html',
       filename: 'dashboard.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/books.html',
+      filename: 'books.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/customers.html',
+      filename: 'customers.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/orders.html',
+      filename: 'orders.html'
     })
   ],
   module: {
