@@ -12,21 +12,21 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new HtmlWebpackPlugin({ template: './src/views/index.html' }),
     new HtmlWebpackPlugin({
-      template: './src/dashboard.html',
+      template: './src/views/dashboard.html',
       filename: 'dashboard.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/books.html',
+      template: './src/views/books.html',
       filename: 'books.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/customers.html',
+      template: './src/views/customers.html',
       filename: 'customers.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/orders.html',
+      template: './src/views/orders.html',
       filename: 'orders.html'
     })
   ],
