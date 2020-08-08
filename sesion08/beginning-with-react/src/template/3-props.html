@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <title>Class component</title>
+  <style>
+    h3, small{
+      margin: 0;
+      padding: 0;
+    }
+    div > div {
+      margin: 1rem 0;
+    }
+    small{
+      color: grey;
+    }
+    a{
+      color: white;
+      margin-left: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go Back</a>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const ReactComponent = () => {
+      const msg = "React class component"
+      return (
+        <div>
+          <h3>{msg}</h3>
+          <InnerComponent
+            title="1. The Six Morning Habits of High Performers"
+            subtitle="By: Pete Mockaitis | How to Be Awesome at Your Job" />
+          <InnerComponent
+            title="2. Unconscious Bias"
+            subtitle="By: Stacey Gordon" />
+          <InnerComponent
+            title="3. Confronting Bias: Thriving Across Our Differences"
+            subtitle="By: Verna Myers and Arianna Huffington" />
+          <ShowMoreComponent label="Show more..."/>
+        </div>
+      )
+    }
+    const InnerComponent = (props) => {
+      const {title, subtitle} = props
+      return (
+        <div>
+          <h3>{title}</h3>
+          <small>{subtitle}</small>
+        </div>
+      )
+    }
+    class ShowMoreComponent extends React.Component{
+      render(){
+        return <a href="#">{this.props.label}</a>
+      }
+    }
+
+
+    ReactDOM.render(
+      <ReactComponent />,
+      document.querySelector('#root')
+    )
+  </script>
+</body>
+
+</html>
