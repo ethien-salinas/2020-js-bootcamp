@@ -18,8 +18,41 @@
   <a onclick="window.history.back()">Go Back</a>
 
   <script type="text/babel">
+    class ReactClassComponent extends React.Component {
+      render() {
+        const msg = "React class component"
+        return (
+          <div>
+            <h3>{msg}</h3>
+            <InnerClassComponent1/>
+            <InnerClassComponent2/>
+          </div>
+        )
+      }
+    }
+    class InnerClassComponent1 extends React.Component {
+      render() {
+        return (
+          <div>
+            <h3>Inner class component 1</h3>
+          </div>
+        )
+      }
+    }
+    class InnerClassComponent2 extends React.Component {
+      render() {
+        return (
+          <div>
+            <h3>Inner class component 2</h3>
+            <p>composed by two tags</p>
+          </div>
+        )
+      }
+    }
+
+
     ReactDOM.render(
-      <h3>Class component</h3>,
+      <ReactClassComponent />,
       document.querySelector('#root')
     )
   </script>
