@@ -1,0 +1,10 @@
+/* https://color.adobe.com/es/explore */
+*{
+    --primary: #07038C;
+    --background-color: #0439D9;
+}
+body{
+    background-color: var(--background-color);
+    color: whitesmoke;
+    font-family: 'Baloo Tamma 2', cursive;
+}
