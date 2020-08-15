@@ -13,7 +13,7 @@ sumButtom.addEventListener('click', function () {
   const result = n1Int + n2Int
   console.log(result)
 
-  //creación de nodo <span>{resultado}<span>
+  //creación de nodo <span>{resultado}</span>
   const textContent = document.createTextNode(result)
   const spanElement = document.createElement('span')
   spanElement.appendChild(textContent)
