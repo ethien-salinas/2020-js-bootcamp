@@ -4,7 +4,7 @@
     --background-color: #0439D9;
 }
 body{
-    background-color: var(--background-color);
+    background-color: var(--primary);
     color: whitesmoke;
     font-family: 'Baloo Tamma 2', cursive;
 }

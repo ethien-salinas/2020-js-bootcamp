@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <title>Conditional Rendering</title>
+  <style>
+    #root div {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      margin: 3rem;
+    }
+
+    #root section {
+      margin: 3rem;
+    }
+  </style>
+
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go Back</a>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    const LoadingComponent = () => {
+      return <h3>Loading...</h3>
+    }
+    const TableComponent = () => {
+      return (
+        <table>
+          <thead>
+            <th>header 1</th>
+            <th>header 2</th>
+            <th>header 3</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>dato 1</td>
+              <td>dato 1</td>
+              <td>dato 1</td>
+            </tr>
+            <tr>
+              <td>dato 2</td>
+              <td>dato 2</td>
+              <td>dato 2</td>
+            </tr>
+            <tr>
+              <td>dato 3</td>
+              <td>dato 3</td>
+              <td>dato 3</td>
+            </tr>
+          </tbody>
+        </table>
+      )
+    }
+
+    const LoginLogoutButton = (props) => {
+      // return <button onClick={props.handleLogin}>Login | Logout</button>
+      return <button onClick={props.handleLogin}>{props.buttonLabel}</button>
+    }
+
+    class HandleState extends React.Component {
+      state = {
+        isLoading: false,
+        isLoggedIn: false
+      }
+      handleClick() {
+        console.log('listening')
+        this.setState({
+          isLoading: !this.state.isLoading
+        })
+      }
+      handleComponentLogin() {
+        console.log('*** handleComponentLogin ***')
+        this.setState({
+          isLoggedIn: !this.state.isLoggedIn
+        })
+      }
+      render() {
+        let result = (!this.state.isLoading) ? <TableComponent /> : <LoadingComponent />
+        return (
+          <div>
+            <section>
+              <button onClick={(e) => this.handleClick(e)}>Change state</button>
+              <p>{result}</p>
+            </section>
+            <section>
+              <LoginLogoutButton
+                handleLogin={(e) => this.handleComponentLogin(e)}
+                buttonLabel={this.state.isLoggedIn ? 'Login' : 'Logout'}
+              />
+            </section>
+          </div>
+        )
+
+      }
+    }
+
+    ReactDOM.render(
+      <HandleState />,
+      document.querySelector('#root')
+    )
+  </script>
+</body>
+
+</html>

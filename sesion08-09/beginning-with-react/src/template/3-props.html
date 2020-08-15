@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 
-  <title>Class component</title>
+  <title>Props</title>
   <style>
     h3,
     small {
@@ -38,33 +38,42 @@
   <div id="root"></div>
 
   <script type="text/babel">
-    class Clock extends React.Component {
-      state = {
-        date: new Date()
-      }
-      _tick(){
-        this.setState({
-          date: new Date()
-        })
-        // this.state.date = new Date()
-        // console.log(this.state.date.toISOString())
-      }
-      componentDidMount() {
-        this.timerID = setInterval(
-          () => this._tick(),
-          1000
-        )
-      }
-      componentWillUnmount() {
-        clearInterval(this.timerID)
-      }
+    const ReactComponent = () => {
+      const msg = "React class component"
+      return (
+        <div>
+          <h3>{msg}</h3>
+          <InnerComponent
+            title="1. The Six Morning Habits of High Performers"
+            subtitle="By: Pete Mockaitis | How to Be Awesome at Your Job" />
+          <InnerComponent
+            title="2. Unconscious Bias"
+            subtitle="By: Stacey Gordon" />
+          <InnerComponent
+            title="3. Confronting Bias: Thriving Across Our Differences"
+            subtitle="By: Verna Myers and Arianna Huffington" />
+          <ShowMoreComponent label="Show more..." />
+        </div>
+      )
+    }
+    const InnerComponent = (props) => {
+      const { title, subtitle } = props
+      return (
+        <div>
+          <h3>{title}</h3>
+          <small>{subtitle}</small>
+        </div>
+      )
+    }
+    class ShowMoreComponent extends React.Component {
       render() {
-        return <h3>It's {this.state.date.toISOString()}</h3>
+        return <a href="#">{this.props.label}</a>
       }
     }
 
+
     ReactDOM.render(
-      <Clock />,
+      <ReactComponent />,
       document.querySelector('#root')
     )
   </script>

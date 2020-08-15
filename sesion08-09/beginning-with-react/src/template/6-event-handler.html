@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <title>Event listener</title>
+
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go Back</a>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class ClassEventListener extends React.Component {
+
+      handleClick1() {
+        const msg = "Handle Click 1"
+        console.log(`Event listener from : ${msg}`)
+      }
+      handleClick2() {
+        const msg = "Handle Click 2"
+        console.log(`Event listener from : ${msg}`)
+      }
+      handleClick3(args) {
+        console.log(`Event listener from : ${args}`)
+      }
+
+      render() {
+        return (
+          <div>
+            <h3>Event Listener (Handler)</h3>
+            <div>
+              <button onClick={this.handleClick1}>[1] Click me</button>
+              <button onClick={(e) => this.handleClick2(e)}>[2] Click me</button>
+              <button onClick={(e) => this.handleClick3('Handle Click 3', e)}>[3] Click me</button>
+            </div>
+            <div>
+              <button >[4] Print Ethien's data</button>
+              <button >[5] Print Daniel's data</button>
+            </div>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <ClassEventListener />,
+      document.querySelector('#root')
+    )
+  </script>
+</body>
+
+</html>
