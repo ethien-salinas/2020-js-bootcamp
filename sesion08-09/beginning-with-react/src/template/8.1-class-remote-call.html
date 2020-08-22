@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    table {
+      max-width: 60rem;
+    }
+  </style>
+  <title>Class Remote call</title>
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go Back</a>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    class TableComponent extends React.Component {
+      state = {
+        posts: []
+      }
+      componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users/3/posts')
+          .then((response) => {
+            return response.json()
+          })
+          .then((jsonData) => {
+            this.setState({
+              posts: jsonData
+            })
+          })
+      }
+      render() {
+        return (
+          <table>
+            <thead>
+              <th>user_id</th>
+              <th>id </th>
+              <th>title</th>
+              <th>body</th>
+            </thead>
+            <tbody>
+              {
+                this.state.posts.map((item) => {
+                  return (
+                    <tr>
+                      <td>{item.userId}</td>
+                      <td>{item.id}</td>
+                      <td>{item.title}</td>
+                      <td>{item.body}</td>
+                    </tr>
+                  )
+                })
+              }
+            </tbody>
+          </table>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <TableComponent />,
+      document.querySelector('#root')
+    )
+  </script>
+</body>
+
+</html>
