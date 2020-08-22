@@ -10,14 +10,16 @@ body{
 }
 
 nav{
-  max-width: 21rem;
+  max-width: 60rem;
   background-color: orange;
   font-size: large;
   margin-left: 3rem;
 }
 nav ul{
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
+  align-content: space-around;
+  max-height: 30rem;
   list-style-type: none;
   margin: 0;
   padding: 0;
