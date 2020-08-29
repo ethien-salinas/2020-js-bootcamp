@@ -6,7 +6,7 @@ const Dashboard = () => {
   const [posts, setPosts] = useState([])
   useEffect(() => {
     const getPosts = async () => {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users/3/posts')
+      const res = await fetch(process.env.REACT_APP_POST_URL)
       const data = await res.json()
       setPosts(data)
     }
