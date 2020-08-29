@@ -5,7 +5,7 @@ const User = () => {
 
   const history = useHistory()
   const { userId } = useParams()
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState({})
   useEffect(() => {
     const getUserData = async () => {
       const res = await fetch(`${process.env.REACT_APP_USER_URL}/${userId}`)
