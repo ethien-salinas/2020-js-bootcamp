@@ -2,12 +2,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Users = () => {
+  const userIdArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   return (
     <>
       <h3>Users view</h3>
-      <li><NavLink to="/user/1">User 1</NavLink></li>
-      <li><NavLink to="/user/2">User 2</NavLink></li>
-      <li><NavLink to="/user/3">User 3</NavLink></li>
+      {
+        userIdArr.map((item) => {
+          return <li><NavLink to={`/user/${item}`}>User {item}</NavLink></li>
+        })
+      }
     </>
   )
 
