@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './view/App';
 import { createStore } from 'redux'
-import counter from './reducers'
+import reducer from './reducers'
 
 const store = createStore(
-  counter,
+  reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
