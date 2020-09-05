@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from './todosSlice'
 
-const mapDispatch = { addTodo }
+const mapDispatchToProps = { addTodo }
 
 const AddTodo = ({ addTodo }) => {
 
@@ -31,5 +31,5 @@ const AddTodo = ({ addTodo }) => {
 
 export default connect(
   null,
-  mapDispatch
+  mapDispatchToProps
 )(AddTodo)
