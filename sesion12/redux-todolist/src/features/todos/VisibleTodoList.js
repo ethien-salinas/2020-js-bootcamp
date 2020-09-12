@@ -9,7 +9,7 @@ const selectFilter = state => state.visibilityFilter
 
 const selectVisibleTodos = createSelector(
   [selectTodos, selectFilter],
-  (todos, filter = VisibilityFilters.SHOW_ACTIVE) => {
+  (todos, filter) => {
     switch (filter) {
       case VisibilityFilters.SHOW_ALL:
         return todos
