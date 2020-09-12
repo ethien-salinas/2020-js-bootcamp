@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex/dist/vuex.js"></script>
+  <title>Vuex</title>
+</head>
+
+<body>
+
+  <a onclick="window.history.back()">Go back</a>
+
+  <h3>Vuex</h3>
+
+  <section id="root">
+    <p>{{countValue}} is {{evenOrOddValue}}</p>
+    <button @click='callIncrement'>+</button>
+    <button @click='callDecrement'>-</button>
+    <button @click='callIncrementAsync'>increment async</button>
+  </section>
+
+  <script>
+    const store = new Vuex.Store({
+      state: {
+        count: 0
+      },
+      getters: {
+        evenOrOdd: (state) => {
+          return state.count % 2 ? 'odd' : 'even'
+        }
+      },
+      mutations: {
+        increment(state, payload) {
+          if (payload) {
+            state.count += payload.myOwnValue
+          } else {
+            state.count++
+          }
+        },
+        decrement(state, payload) {
+          state.count--
+        }
+      },
+      actions: {
+        incrementAsync({ state, commit }) {
+          setTimeout(() => {
+            commit('increment')
+            resolve()
+          }, 1000)
+        },
+      }
+    })
+
+    new Vue({
+      el: '#root',
+      computed: {
+        countValue() {
+          return store.state.count
+        },
+        evenOrOddValue() {
+          return store.getters.evenOrOdd
+        }
+      },
+      methods: {
+        callIncrement() {
+          store.commit('increment', { myOwnValue: 3 })
+        },
+        callDecrement() {
+          store.commit('decrement')
+        },
+        callIncrementAsync() {
+          store.dispatch('incrementAsync')
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>
