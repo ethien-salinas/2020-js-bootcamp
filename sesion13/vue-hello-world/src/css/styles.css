@@ -1,0 +1,52 @@
+* {
+  --body-background-color: dodgerblue;
+  --nav-background-color: orange;
+}
+body {
+  background-color: var(--body-background-color);
+  color: whitesmoke;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body a {
+  background-color: lightyellow;
+  color: black;
+  border: .3rem solid gold;
+  padding: .3rem .9rem;
+  display: inline-block;
+}
+
+nav {
+  max-width: 60rem;
+  background-color: var(--nav-background-color);
+  font-size: large;
+  margin-left: 3rem;
+}
+nav ul {
+  display: flex;
+  /* flex-flow: column wrap; */
+  flex-direction: column;
+  align-content: space-around;
+  max-height: 30rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  padding: .6rem .9rem;
+}
+nav ul li a {
+  display: inline-block;
+  min-width: 15rem;
+  background-color: azure;
+  color: grey;
+  border: .3rem solid rgb(9, 89, 164);
+  border-radius: .3rem;
+  padding: .3rem .6rem;
+  text-decoration: none;
+  margin-left: .6rem;
+}
+nav ul li a:hover {
+  background-color: rgb(9, 89, 164);
+  color: white;
+}

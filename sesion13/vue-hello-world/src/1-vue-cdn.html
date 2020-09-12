@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>Vue CDN</title>
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go back</a>
+
+  <section id="root">
+    <h3>Hello world {{message}}</h3>
+  </section>
+  <section id="root3">
+    <h3>Hola {{name}}</h3>
+  </section>
+
+  <script>
+    const app = new Vue({
+      el: '#root',
+      data: {
+        message: 'Vue'
+      }
+    })
+    const app3 = new Vue({
+      el: '#root3',
+      data: {
+        name: 'Ethien'
+      }
+    })
+  </script>
+</body>
+
+</html>
