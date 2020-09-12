@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>Vue Component</title>
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go back</a>
+  <h3>Vue Methods</h3>
+  <section id="root">
+    <ul>
+      <li v-for='(vueTech, index) in vueEcosystem'>
+        <vue-tech :id='vueTech.id' :tech='vueTech.tech' />
+      </li>
+    </ul>
+    <button v-on:click='addTechnology'>Add tech</button>
+    <button v-on:click='removeTechnology'>Remove tech</button>
+  </section>
+
+  <script>
+    Vue.component('vue-tech', {
+      props: ['id', 'tech'],
+      template: `
+        <div>{{id}} - {{tech}} is a Vue tech ✌🏻</div>
+      `
+    })
+    const app = new Vue({
+      el: '#root',
+      data: {
+        vueEcosystem: [
+          { id: 1, tech: 'vue cli' },
+          { id: 2, tech: 'vue devtools' },
+          { id: 3, tech: 'vue loader' },
+          { id: 4, tech: 'vue router' },
+          { id: 5, tech: 'vuex (state management)' }
+        ]
+      },
+      methods: {
+        addTechnology() {
+          console.log('the button has been clicked')
+          this.vueEcosystem.push({ id: 6, tech: 'nuxt (server side render)' })
+        },
+        removeTechnology() {
+          this.vueEcosystem.splice(this.vueEcosystem.length - 1, 1)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
