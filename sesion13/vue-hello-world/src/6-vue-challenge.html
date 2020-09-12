@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>Vue Challenge</title>
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go back</a>
+  <h3>Vue Challenge</h3>
+  <section id="root">
+    <ul>
+      <li>Reverse string</li>
+      <li>show/hide list</li>
+      <li>change button label</li>
+    </ul>
+    
+    <h2>{{title}}</h2>
+    <vue-tech
+      v-if='displayList'
+      v-for='(vueTech) in vueEcosystem'
+      :tech="vueTech.technology"
+    ></vue-tech>
+
+    <button v-on:click='reverseString'>Reverse title</button>
+    <button @click='showList'>{{buttonLabel}}</button>
+  </section>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('vue-tech', {
+      props: ['tech'],
+      template: '<p>{{tech}}</p>'
+    })
+
+    let app = new Vue({
+      el: '#root',
+      data: {
+        title: 'Title managed by vue',
+        buttonLabel: 'show list',
+        displayList: false,
+        vueEcosystem: [
+          { id: 1, technology: 'vue cli' },
+          { id: 2, technology: 'vue devtools' },
+          { id: 3, technology: 'vue router' },
+          { id: 4, technology: 'vuex (state manager)' },
+          { id: 5, technology: 'nuxt (server side render)' },
+        ]
+      },
+      methods: {
+        reverseString() {
+          this.title = this.title.split("").reverse().join("")
+        },
+        showList() {
+          this.displayList = !this.displayList
+          this.buttonLabel = (this.displayList) ? 'hide list' : 'show  list'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
