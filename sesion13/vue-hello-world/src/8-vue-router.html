@@ -18,19 +18,16 @@
   </section>
 
   <script>
-    const Root = Vue.component('root', {
-      template: `
-        <div>🌱 Root Component</div>
-      `
-    })
-    const routes = [
-      { path: '/', component: Root }
-    ]
-    const router = new VueRouter({
-      routes
-    })
     new Vue({
-      router
+      router: new VueRouter({
+        routes: [
+          {
+            path: '/', component: Vue.component('root-component', {
+              template: `<div>🌱 Root Component</div>`
+            })
+          }
+        ]
+      })
     }).$mount('#root')
   </script>
 </body>
