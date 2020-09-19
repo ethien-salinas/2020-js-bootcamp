@@ -29,9 +29,7 @@
         count: 0
       },
       getters: {
-        evenOrOdd: (state) => {
-          return state.count % 2 ? 'odd' : 'even'
-        }
+        evenOrOdd: (state) => state.count % 2 ? 'odd' : 'even'
       },
       mutations: {
         increment(state, payload) {
