@@ -1,12 +1,32 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link>|
+      <router-link to="/about">About</router-link>|
+      <router-link to="/secure">Secure</router-link>|
+      <router-link to="/register">Register</router-link>|
+      <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
+      <a @click="logout" v-else>Logout</a>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+  },
+  methods: {
+    logout: async function(){
+      await this.$store.dispatch('logout')
+      await this.$router.push('/login')
+    }
+  }
+};
+</script>
 
 <style>
 #app {
