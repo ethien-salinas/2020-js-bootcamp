@@ -14,9 +14,10 @@
   <a onclick="window.history.back()">Go back</a>
   <h3>Vue Router</h3>
   <section id="root">
-    <a href="/8-vue-router.html#/">root</a>
-    <a href="/8-vue-router.html#/dashboard">dashboard</a>
-    <a href="/8-vue-router.html#/user">user</a>
+    <router-link to='/' exact>root</router-link>
+    <router-link to='/dashboard'>dashboard</router-link>
+    <router-link to='/user' exact>user</router-link>
+    <router-link to='/user/3'>user 3</router-link>
     <router-view></router-view>
   </section>
 
@@ -25,11 +26,12 @@
       template: `<div>🌱 Root Component</div>`
     })
     const DashboardComponent = { template: `<div>📈 Dashboard Component</div>` }
-    const UserComponent = { template: `<div>👨🏻‍💻 User Component</div>` }
+    const UserComponent = { template: `<div>👨🏻‍💻 User {{$route.params.id}} Component</div>` }
     const routes = [
       { path: '/', component: RootComponent },
       { path: '/dashboard', component: DashboardComponent },
       { path: '/user', component: UserComponent },
+      { path: '/user/:id', component: UserComponent },
     ]
     const router = new VueRouter({
       routes
