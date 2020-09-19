@@ -11,11 +11,22 @@ export default new Vuex.Store({
     isLoggedIn: state => !!state.token
   },
   mutations: {
+    login(state, token) {
+      state.token = token
+    },
     logout(state) {
       state.token = ''
     }
   },
   actions: {
+    login({ commit }) {
+      return new Promise((resolve) => {
+        const token = 'valor que llega de una llamada remota'
+        localStorage.setItem('token', token)
+        commit('login', token)
+        resolve()
+      })
+    },
     logout({ commit }) {
       return new Promise((resolve) => {
         commit('logout')
