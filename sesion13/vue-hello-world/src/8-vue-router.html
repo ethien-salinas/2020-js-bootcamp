@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <title>Vue Component</title>
+</head>
+
+<body>
+  <a onclick="window.history.back()">Go back</a>
+  <h3>Vue Router</h3>
+  <section id="root">
+    <router-view></router-view>
+  </section>
+
+  <script>
+    const Root = Vue.component('root', {
+      template: `
+        <div>🌱 Root Component</div>
+      `
+    })
+    const routes = [
+      { path: '/', component: Root }
+    ]
+    const router = new VueRouter({
+      routes
+    })
+    new Vue({
+      router
+    }).$mount('#root')
+  </script>
+</body>
+
+</html>
