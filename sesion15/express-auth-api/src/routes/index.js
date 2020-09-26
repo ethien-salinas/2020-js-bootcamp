@@ -69,7 +69,8 @@ router.post('/verify-jwt', (req, res) => {
       })
     res.send({
       valid: true,
-      msg: decoded,
+      decoded,
+      payload: req.body
     })
   });
 })
