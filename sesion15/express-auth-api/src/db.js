@@ -15,11 +15,19 @@ class DB {
     `)
   }
 
-  insert(user, callback) {
+  create(user, callback) {
     return this.db.run(
       'INSERT INTO user (name, email, user_pass) VALUES(?, ?, ?)',
       user,
       (err) => { callback(err) }
+    )
+  }
+
+  findByEmail(email, callback) {
+    return this.db.get(
+      'SELECT * from user WHERE email = ?',
+      email,
+      (err, row) => { callback(err, row) }
     )
   }
 

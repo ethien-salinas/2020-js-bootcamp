@@ -22,3 +22,28 @@ Content-Type: application/json
 
 ###
 POST http://127.0.0.1:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "ethien.salinas@gmail.com",
+  "password": "qwerty"
+}
+
+###
+POST http://127.0.0.1:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "ethien@gmail.com",
+  "password": "qwerty"
+}
+
+###
+POST http://127.0.0.1:3000/verify-jwt HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlciI6ImV0aGllbi5zYWxpbmFzQGdtYWlsLmNvbSIsImlhdCI6MTYwMTE1MzI1NSwiZXhwIjoxNjAxMTU2ODU1fQ.E-4gTV9IoGL7narqBtsxrMlbRXZU0S1UfRIggBR7v4I
+
+{
+  "data": "datos útiles para la petición",
+  "date": "{{$datetime rfc1123}}"
+}
