@@ -15,7 +15,7 @@ func SaveUser(c echo.Context) error {
 func GetUser(c echo.Context) error {
 	id := c.Param("id")
 	if id == "" {
-		return c.String(http.StatusOK, "GetUser")
+		return c.String(http.StatusOK, "GetUsers")
 	}
 	return c.String(http.StatusOK, "GetUser "+id)
 }
