@@ -120,3 +120,6 @@ dist
 
 # sqlite
 storage.sqlite
+
+# ts
+built
