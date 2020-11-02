@@ -5,19 +5,21 @@ import { User } from "../entity/User";
 export class UserController {
   users: Array<IUser>;
 
-  async getUsers() {
+  private readonly SALT_ROUNDS = 9;
+
+  async getUsers(): Promise<Array<IUser>> {
     return await connection.manager.find(User);
   }
-  async getUser(id: number) {
+  async getUser(id: number): Promise<IUser> {
     return await connection.manager.findOne(User, {
       where: { id: id },
     });
   }
-  async saveUser(user: IUser) {
-    user.password = await hash(user.password, 9)
+  async saveUser(user: IUser): Promise<IUser> {
+    user.password = await hash(user.password, this.SALT_ROUNDS)
     return await connection.manager.save(User, user);
   }
-  async updateUser(user: IUser) {
+  async updateUser(user: IUser): Promise<IUser> {
     let currentUser = await this.getUser(user.id)
     // eliminamos nodos con valor undefined
     Object.keys(user).forEach(key =>
@@ -25,7 +27,7 @@ export class UserController {
     )
     // si se ha enviado nuevo password, debe cifrarse
     if (user.hasOwnProperty('password')) {
-      user.password = await hash(user.password, 9)
+      user.password = await hash(user.password, this.SALT_ROUNDS)
     }
     currentUser = { ...currentUser, ...user }
     return await connection.manager.save(User, currentUser)
