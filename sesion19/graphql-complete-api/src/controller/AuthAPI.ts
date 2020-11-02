@@ -6,7 +6,7 @@ import { sign, verify } from "jsonwebtoken";
 
 export class AuthAPI {
 
-  async getToken({ email, password }) {
+  async getToken({ email, password }): Promise<string> {
     const user = await connection.manager.findOne(User, {
       where: { email: email }
     });
