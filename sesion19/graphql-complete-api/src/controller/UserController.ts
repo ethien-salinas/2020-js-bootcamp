@@ -3,7 +3,6 @@ import { connection } from "../db";
 import { User } from "../entity/User";
 
 export class UserController {
-  users: Array<IUser>;
 
   private readonly SALT_ROUNDS = 9;
 
