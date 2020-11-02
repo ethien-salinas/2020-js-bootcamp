@@ -1,8 +1,8 @@
-import { AuthenticationError } from "apollo-server";
+import { ApolloError, AuthenticationError } from "apollo-server";
 import { connection } from "../db";
 import { User } from "../entity/User";
 import { compare } from "bcrypt";
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 export class AuthAPI {
 
   async getToken({ email, password }) {
@@ -20,6 +20,13 @@ export class AuthAPI {
     } else {
       throw new AuthenticationError('Invalid credentials')
     }
+  }
+
+  async verifyToken(token: string): Promise<boolean> {
+    let isValidToken: boolean = false
+    if (!token) throw new ApolloError('missing token')
+    let decoded = await verify(token, process.env.JWT_SECRET)
+    return decoded ? !isValidToken : isValidToken
   }
 
 }
