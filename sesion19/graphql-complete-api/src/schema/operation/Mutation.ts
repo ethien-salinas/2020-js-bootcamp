@@ -3,11 +3,11 @@ const { gql } = require("apollo-server");
 export const Mutation = gql`
   type Mutation {
     saveUser(
-      name:String!,
-      lastName:String!,
+      name:String,
+      lastName:String,
       email:String!,
       password:String!,
-      isAdmin:Boolean!
+      isAdmin:Boolean
     ): User
     updateUser(
       id:Int!, 
