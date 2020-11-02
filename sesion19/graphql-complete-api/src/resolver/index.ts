@@ -8,7 +8,7 @@ export const resolvers = {
   Query: {
     login: (_, { email, password }) => authAPI.getToken({ email, password }),
     users: async (_, __, { token }) => {
-      return await authAPI.verifyToken(token) && userController.getUsers()
+      return authAPI.verifyToken(token) && userController.getUsers()
     },
     user: (_, { id }) => userController.getUser(id),
   },

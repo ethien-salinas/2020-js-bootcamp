@@ -14,19 +14,21 @@ export class UserController {
     });
   }
   async saveUser(user: IUser) {
-
-    return await connection.manager.save(User, {
-      name: user.name,
-      lastName: user.lastName,
-      email: user.email,
-      password: await hash(user.password, 9),
-      isAdmin: user.isAdmin,
-    });
+    user.password = await hash(user.password, 9)
+    return await connection.manager.save(User, user);
   }
   async updateUser(user: IUser) {
     let currentUser = await this.getUser(user.id)
-    currentUser = { ...currentUser, ...user } // - ¿objeto inmutable?
-    return this.saveUser(currentUser) //TODO: change to connection.manager.update
+    // eliminamos nodos con valor undefined
+    Object.keys(user).forEach(key =>
+      user[key] === undefined && delete user[key]
+    )
+    // si se ha enviado nuevo password, debe cifrarse
+    if (user.hasOwnProperty('password')) {
+      user.password = await hash(user.password, 9)
+    }
+    currentUser = { ...currentUser, ...user }
+    return await connection.manager.save(User, currentUser)
   }
   deleteUser(id: number) { }
 }

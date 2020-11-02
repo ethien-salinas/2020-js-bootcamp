@@ -3,6 +3,7 @@ import { connection } from "../db";
 import { User } from "../entity/User";
 import { compare } from "bcrypt";
 import { sign, verify } from "jsonwebtoken";
+
 export class AuthAPI {
 
   async getToken({ email, password }) {
@@ -22,10 +23,10 @@ export class AuthAPI {
     }
   }
 
-  async verifyToken(token: string): Promise<boolean> {
+  verifyToken(token: string): boolean {
     let isValidToken: boolean = false
     if (!token) throw new ApolloError('missing token')
-    let decoded = await verify(token, process.env.JWT_SECRET)
+    let decoded = verify(token, process.env.JWT_SECRET)
     return decoded ? !isValidToken : isValidToken
   }
 
