@@ -15,11 +15,11 @@ export const resolvers = {
       && userAPI.getUser(id),
   },
   Mutation: {
-    saveUser: (_, { name, lastName, email, password, isAdmin }) =>
-      userAPI.saveUser({ name, lastName, email, password, isAdmin }),
-    updateUser: (_, { id, name, lastName, email, password, isAdmin }, { token }) =>
+    saveUser: (_, { input }) =>
+      userAPI.saveUser({ ...input }),
+    updateUser: (_, { id, input }, { token }) =>
       authAPI.verifyToken(token)
-      && userAPI.updateUser({ id, name, lastName, email, password, isAdmin }),
+      && userAPI.updateUser({ id, ...input }),
     deleteUser: (_, { id }, { token }) =>
       authAPI.verifyToken(token)
       && userAPI.deleteUser(id),

@@ -6,6 +6,12 @@ export const User = gql`
     name: String
     lastName: String
     email: String
+    isAdmin: Boolean
+  }
+  input UserInput {
+    name: String
+    lastName: String
+    email: String
     password: String
     isAdmin: Boolean
   }
