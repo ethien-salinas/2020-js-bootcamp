@@ -1,8 +1,7 @@
 require('dotenv').config()
 import { typeDefs } from "./schema";
 import { resolvers } from "./resolver";
-
-const { ApolloServer } = require("apollo-server");
+import { ApolloServer } from "apollo-server";
 
 new ApolloServer({
   typeDefs,
@@ -12,6 +11,6 @@ new ApolloServer({
       token: req.headers.authorization || ''
     }
   }
-}).listen(3003).then(({ url }) => {
+}).listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
