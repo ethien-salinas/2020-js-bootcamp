@@ -2,7 +2,7 @@ import { hash } from "bcrypt";
 import { connection } from "../db";
 import { User } from "../entity/User";
 
-export class UserController {
+export class UserAPI {
 
   private readonly SALT_ROUNDS = 9;
 

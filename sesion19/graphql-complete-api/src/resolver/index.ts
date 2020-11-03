@@ -1,7 +1,7 @@
 import { AuthAPI } from "../controller/AuthAPI";
-import { UserController } from "../controller/UserController";
+import { UserAPI } from "../controller/UserAPI";
 
-const userController: UserController = new UserController();
+const userController: UserAPI = new UserAPI();
 const authAPI: AuthAPI = new AuthAPI();
 
 export const resolvers = {
