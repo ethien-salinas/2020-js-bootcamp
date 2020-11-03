@@ -17,5 +17,6 @@ export const Mutation = gql`
       password:String,
       isAdmin:Boolean
     ): User
+    deleteUser(id:Int!): User
   }
 `;

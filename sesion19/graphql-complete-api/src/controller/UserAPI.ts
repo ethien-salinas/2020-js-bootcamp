@@ -31,7 +31,10 @@ export class UserAPI {
     currentUser = { ...currentUser, ...user }
     return await connection.manager.save(User, currentUser)
   }
-  deleteUser(id: number) { }
+  async deleteUser(id: number): Promise<IUser> {
+    let currentUser = await this.getUser(id)
+    return await connection.manager.remove(User, currentUser)
+  }
 }
 
 interface IUser {
