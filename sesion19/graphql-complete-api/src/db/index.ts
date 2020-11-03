@@ -10,7 +10,7 @@ let connection: Connection;
     synchronize: true,
     logging: true,
     entities: [
-      User,
+      __dirname + '/../entity/*',
     ],
   });
 })();
