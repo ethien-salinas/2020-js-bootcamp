@@ -39,9 +39,9 @@ export class UserAPI {
 
 interface IUser {
   id?: number;
-  name: string;
+  name?: string;
   lastName?: string;
   email: string;
   password: string;
-  isAdmin: boolean;
+  isAdmin?: boolean;
 }
