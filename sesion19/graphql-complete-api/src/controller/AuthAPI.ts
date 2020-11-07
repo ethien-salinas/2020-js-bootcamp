@@ -1,14 +1,24 @@
 import { ApolloError, AuthenticationError } from "apollo-server";
-import { connection } from "../db";
+import { getConnection } from "../db";
 import { User } from "../entity/User";
 import { compare } from "bcrypt";
 import { sign, verify } from "jsonwebtoken";
+import { Connection } from "typeorm";
 
 export class AuthAPI {
 
+  private connection: Connection;
+
+  constructor() {
+    getConnection()
+      .then(conn => {
+        this.connection = conn
+      })
+  }
+
   async getToken({ email, password }): Promise<string> {
-    const user = await connection.manager.findOne(User, {
-      where: { email: email }
+    const user = await this.connection.manager.findOne(User, {
+      where: { email }
     });
 
     if (user &&

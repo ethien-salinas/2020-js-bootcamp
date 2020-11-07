@@ -1,22 +1,30 @@
 import { hash } from "bcrypt";
-import { connection } from "../db";
+import { Connection } from "typeorm";
+import { getConnection } from "../db";
 import { User } from "../entity/User";
 
 export class UserAPI {
 
   private readonly SALT_ROUNDS = 9;
+  private connection: Connection;
 
+  constructor() {
+    getConnection()
+      .then(conn => {
+        this.connection = conn
+      })
+  }
   async getUsers(): Promise<Array<IUser>> {
-    return await connection.manager.find(User);
+    return await this.connection.manager.find(User);
   }
   async getUser(id: number): Promise<IUser> {
-    return await connection.manager.findOne(User, {
-      where: { id: id },
+    return await this.connection.manager.findOne(User, {
+      where: { id },
     });
   }
   async saveUser(user: IUser): Promise<IUser> {
     user.password = await hash(user.password, this.SALT_ROUNDS)
-    return await connection.manager.save(User, user);
+    return await this.connection.manager.save(User, user);
   }
   async updateUser(user: IUser): Promise<IUser> {
     let currentUser = await this.getUser(user.id)
@@ -29,11 +37,11 @@ export class UserAPI {
       user.password = await hash(user.password, this.SALT_ROUNDS)
     }
     currentUser = { ...currentUser, ...user }
-    return await connection.manager.save(User, currentUser)
+    return await this.connection.manager.save(User, currentUser)
   }
   async deleteUser(id: number): Promise<IUser> {
     let currentUser = await this.getUser(id)
-    return await connection.manager.remove(User, currentUser)
+    return await this.connection.manager.remove(User, currentUser)
   }
 }
 
