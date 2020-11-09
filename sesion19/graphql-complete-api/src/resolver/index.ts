@@ -1,8 +1,17 @@
+import { Connection } from "typeorm";
 import { AuthAPI } from "../controller/AuthAPI";
 import { UserAPI } from "../controller/UserAPI";
+import { getConnection } from "../db";
 
-const userAPI: UserAPI = new UserAPI();
-const authAPI: AuthAPI = new AuthAPI();
+
+let connection: Connection;
+let userAPI: UserAPI;
+let authAPI: AuthAPI;
+getConnection().then(conn => {
+  connection = conn
+  userAPI = new UserAPI(connection);
+  authAPI = new AuthAPI(connection);
+})
 
 export const resolvers = {
   Query: {

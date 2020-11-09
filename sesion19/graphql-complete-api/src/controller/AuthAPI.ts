@@ -1,5 +1,4 @@
 import { ApolloError, AuthenticationError } from "apollo-server";
-import { getConnection } from "../db";
 import { User } from "../entity/User";
 import { compare } from "bcrypt";
 import { sign, verify } from "jsonwebtoken";
@@ -9,11 +8,8 @@ export class AuthAPI {
 
   private connection: Connection;
 
-  constructor() {
-    getConnection()
-      .then(conn => {
-        this.connection = conn
-      })
+  constructor(connection: Connection) {
+    this.connection = connection
   }
 
   async getToken({ email, password }): Promise<string> {

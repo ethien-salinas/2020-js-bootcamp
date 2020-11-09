@@ -1,6 +1,5 @@
 import { hash } from "bcrypt";
 import { Connection } from "typeorm";
-import { getConnection } from "../db";
 import { User } from "../entity/User";
 
 export class UserAPI {
@@ -8,12 +7,10 @@ export class UserAPI {
   private readonly SALT_ROUNDS = 9;
   private connection: Connection;
 
-  constructor() {
-    getConnection()
-      .then(conn => {
-        this.connection = conn
-      })
+  constructor(connection: Connection) {
+    this.connection = connection
   }
+
   async getUsers(): Promise<Array<IUser>> {
     return await this.connection.manager.find(User);
   }
