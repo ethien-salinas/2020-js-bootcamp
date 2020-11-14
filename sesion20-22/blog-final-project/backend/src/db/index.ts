@@ -1,6 +1,6 @@
 import { createConnection } from "typeorm"
 
-export const getConnection = async () => {
+export const getDBConnection = async () => {
   const connection = await createConnection({
     type: "sqlite",
     database: "database.sqlite",
